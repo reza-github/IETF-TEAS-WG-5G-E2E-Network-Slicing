@@ -1,1 +1,10 @@
+- Terminology Consistence
+
+- “5G End to End Network Slice”
+   1) Define/Introduce in IETF?
+   2) Alternative: 5G Network Slice?
+
+- AN or RAN
+   1) Only cover radio access or other access methods are also covered
+   2) Authors recommend to use RAN
 
