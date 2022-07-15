@@ -1,1 +1,101 @@
+Thread: [Teas] Applicability of IETF network slices in the 3GPP context
+
+2022-05-25 [Chairs:Pavan and Lou]
+
+We (the chairs) acknowledge that it is important for the WG to work on a
+document that discusses the applicability of IETF network slices in the
+3GPP context.
+
+We have had 3 documents presented in past TEAS sessions that can form the
+basis of such a document:
+https://datatracker.ietf.org/doc/draft-contreras-teas-3gpp-ietf-slice-mapping/
+https://datatracker.ietf.org/doc/draft-geng-teas-network-slice-mapping
+https://datatracker.ietf.org/doc/draft-rokui-5g-ietf-network-slice/
+
+We encourage the authors of these documents to find ways to collaborate and
+produce a single document (ideally before IETF114) that the WG can look to
+adopt.
+
+-----------------------------------------------------------------------------------
+
+2022-05-30 [Shunsuke Homma]
+
+BTW, although its scope is not only 3GPP network slice, the following
+document may be help to understand the architecture of 3GPP user plane and
+its requirements including network slicing.
+
+https://www.ietf.org/archive/id/draft-ietf-dmm-5g-uplane-analysis-04.txt
+
+-------------------------------------------------------------------------------------
+
+2022-05-31 [Luis Contreras]
+
+I think we have complementary parts which are worthy to put together. On one hand there are 
+generic architectural aspects that can show how 3GPP systems will act as upper systems of IETF NSC. 
+There are also aspects on how 3GPP expects (as today) to requests slices at TN (in 3GPP terminology), 
+which could show limitations (or undefined terms) on some of the required capabilities at the 
+connectivity slices. And finally there are potential realizations today that could be documented.
+
+The task is huge, anyway, so we need to analyze what can be delivered for IETF114, maybe an structure 
+of the merged content, hopefully something else. In any case, definitely worthy to work on it.
+
+-------------------------------------------------------------------------------------
+
+2022-05-31 [Xuesong Geng]
+
+Document merge proposal
+There are 3 documents in TEAS about this topic with slightly different side focus:
+
+-        draft-geng-teas-network-slice-mapping provides a procedure of mapping 5G end-to-end network defined in 5GPP slice to transport network slice defined in IETF, which gives guidance about how to use IETF network slice in 5G scenario in management plane, control plane and data plane respectively.
+
+-        draft-contreras-teas-3gpp-ietf-slice-mapping discusses mapping of 3GPP slice and IETF network slice endpoint and other related parameters, which mainly focuses about how to provide connection between 3GPP connection by IETF Network Slice with NSC
+
+-        draft-rokui-5g-ietf-network-slice discusses the relationship between 5G E2E network slicing and IETF network slice for 5G use-case, which also gives 5G IETF Network Slice NBI Information Model
+
+Here is an initial proposal about the structure for combining these 3 documents:
+
+-        5G End-to-End Network Slice Introduction  . . . . . . . . .   background information summarized from 3 documents
+
+-        Network Slice Mapping Structure . . . . . . . . . . . . . . .   draft-geng-teas-network-slice-mapping/draft-rokui-5g-ietf-network-slice
+
+-        Network Slice Mapping Parameters  . . . . . . . . . . . . . . . draft-contreras-teas-3gpp-ietf-slice-mapping/ draft-geng-teas-network-slice-mapping
+
+-        Network Slice Mapping Procedure . . . . . . . . . . . . . . .   draft-geng-teas-network-slice-mapping
+
+Y   Network Slice Mapping in Management Plane . . . . . . . .   draft-contreras-teas-3gpp-ietf-slice-mapping
+
+Y   Network Slice Mapping in Control Plane  . . . . . . . . .  draft-geng-teas-network-slice-mapping
+
+Y   Network Slice Mapping in Data Plane . . . . . . . . . . .  draft-geng-teas-network-slice-mapping
+
+-        5G IETF Network Slice NBI  . . . . . . . . . . . . . . . .  draft-rokui-5g-ietf-network-slice
+
+-------------------------------------------------------------------------------------
+
+2022-06-08 [Shunsuke Homma]
+
+-  Is any special identifier, which is IETF-nodes aware (e.g., SID in an
+IPv6 extension header, MPLS label, NSH, etc.), is needed for classification
+on IETF NS PE? As you know, packets on N3 and N9 interfaces are
+encapsulated  with GTP-U, and traffic assigned to different network slices
+may have the same src/dst IP addresses. If we use some special identifier,
+a standardized scheme for that would be needed, especially for
+multi-administrative domains environment. Or, 3GPP 5G system is required to
+deploy an interface or a UPF instance for each network slice?
+
+- Are there any differences between procedures of mapping/stitching
+3GPP-IETF network slices at RAN, 5G-Core, and DN (i.e., N3, N6, and N9
+interfaces) ? (For example, information exchanged between IETF NSC and 5G
+OpS, or classification scheme.) 5G has MEC scenarios and guaranteed
+communication quality may be required in DN. On N6 packets are passed as
+user-plane PDU, and network slices run on DN may be required to support
+ethernet and unstructured forms, in addition to IPv4/v6 (ref TS23 501).
+Also, 5G allows multiple access, and we may need to consider cases where
+IETF network slices deployed on a fixed network (this is not TN within RAN)
+connected to a 5G-core.
+
+-------------------------------------------------------------------------------------
+
+
+
 
