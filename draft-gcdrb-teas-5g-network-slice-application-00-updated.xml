@@ -15,7 +15,7 @@
      ipr="trust200902">
   <front>
     <title abbrev="draft-gcdrb-teas-5g-network-slice-application-00">IETF
-    Network Slice Application in 5G End-to-End Network Slice</title>
+    Network Slice Application in 3GPP End-to-End Network Slice</title>
 
     <author fullname="Xuesong Geng" initials="X." surname="Geng">
       <organization>Huawei Technologies</organization>
@@ -122,12 +122,12 @@
     <keyword>Draft</keyword>
 
     <abstract>
-      <t>Network Slicing is one of the core features in 5G, which provides
+      <t>Network Slicing is one of the core features in 3GPP, which provides
       different network service as independent logical networks. To provide 5G
       network slices service, an end-to-end network slice needs to consists of
       3 major types of network segments: Radio Access Network (RAN), Mobile
       Core Network (CN) and Transport Network (TN). This document describes
-      the application of IETF network slice in providing 5G end-to-end network
+      the application of IETF network slice in providing 3GPP end-to-end network
       slices, including the network slice identification mapping, network
       slice parameter mapping and 5G IETF Network Slice NBI.</t>
     </abstract>
@@ -259,24 +259,24 @@
 
       <t><list style="symbols">
           <t>IETF Network Slices in Distributed RAN deployment</t>
-        </list>Distributed RAN is the most common deployment of 4G and 5G RAN
-      networks as shown in Figure 2-1. The RAN network is connected to Core
-      network (CN) using the IETF transport network (TN).</t>
+        </list>Distributed RAN is the most common deployment of 3GPP RAN
+      networks as shown in Figure 2-1. The radio acess network (RAN) is connected to Core
+      network (CN) using the IETF transport network (TN1).</t>
 
-      <t>In this case, a single E2E network slice contains not only RAN and
-      Core slices but IETF network slices INS_1 which provides the
-      connectivity between RAN to CN slices.</t>
+      <t>In this case, a single 3GPP E2E network slice contains not only RAN and
+      Core slices but IETF network slices INS1. INS1 provides the
+      connectivity between RAN and CN slices.</t>
 
       <t><figure>
           <artwork><![CDATA[ 
-   <-------------- 5G E2E Network Slice  -------------->
+   <-------------- 3GPP E2E Network Slice  ------------->
      <---- RS ---->           <-------- CS ---------->
                     <- INS1 ->         <- INS2 ->
    .................          .........................
    : RAN           :          : CN                    :
    :               : ........ :        .......        :
    : |----| |----| : :      : : |----| :     : |----| :
-   : | NF | | NF | : :  TN1 : : | NF | : TN2 : | NF | :
+   : | NF1| | NF2| : :  TN1 : : | NF | : TN2 : | NF | :
    : |----| |----| : :      : : |----| :     : |----| :
    :               : :......: :        :.....:        :
    :...............:          :.......................:      
@@ -286,31 +286,33 @@
      RS: RAN Slice
      CS: Core Slice
      TN: IETF network
+     CN: Core Network
+     RAN:Access Neetwork (Radio)
 
       Figure 2-1:  IETF network slices in distributed RAN deployment]]></artwork>
         </figure><list style="symbols">
           <t>IETF Network Slices in Centralized RAN deployment</t>
-        </list>The RAN consists of two functional units: the baseband unit and
-      the radio unit (RU). The baseband unit processes the radio signal and is
-      connected to the transport network. The RU transmits and receives the
-      carrier signal that is transmitted over the air to the end user
-      equipment (UE). In Centralized RAN as depicted in Figure 2-2, the RU and
-      baseband are separated by a network called fronthaul network.</t>
+        </list>In general the RAN network consists of network functions NF1 and MF2.
+      NF1 processes the radio signal and is connected to the transport network and 
+      NF2 transmits and receives the carrier signal that is transmitted over the air to the end user
+      equipment (UE). In Centralized RAN as depicted in Figure 2-2, network functions NF1 and NF2
+      are separated by a network called fronthaul network (FH).</t>
 
-      <t>In this deployment a single 5G E2E network slice contains not only 5G
-      RAN and 5G Core slices but one IETF network slice INS_1 where INS_1 is
-      identical to their counterparts in distributed RAN deployment case.</t>
+      <t>In this deployment a 3GPP E2E network slice contains of RAN and  
+      Core slices and IETF network slices INS1, INS2 and INS3.
+      INS1 and INS2 are identical to Figure 2-1 and INS3 is a new IETF network 
+      slice across access network between NF1 and NF2.</t>
 
       <t><figure>
           <artwork><![CDATA[ 
-   <-------------------- 5G E2E Network Slice  ----------------->
+   <-------------------- 3GPP E2E Network Slice  ----------------->
      <-------- RS --------->           <---------- CS --------->
           <- INS3 ->        <- INS1 ->         <- INS2 ->
    .........................          ...........................
    : RAN                   :          : CN                      :
    :        .......        : ........ :         .......         :
    : |----| :     : |----| : :      : : |-----| :     : |-----| :
-   : | NF | : TN3 : | NF | : :  TN1 : : | NF  | : TN2 : | NF  | :
+   : | NF1| : TN3 : | NF2| : :  TN1 : : | NF  | : TN2 : | NF  | :
    : |----| : (FH): |----| : :      : : |-----| :     : |-----| :
    :        :.....:        : :......: :         :.....:         :
    :.......................:          :.........................: 
@@ -321,36 +323,35 @@ Legend
   CS: Core Slice
   FN: Fronthaul IETF network
   TN: IETF network
+  CN: Core Network
+  RAN:Access Neetwork (Radio)
 
      Figure 2-2:  IETF network slices in Centralized RAN deployment]]></artwork>
         </figure></t>
 
       <t><list style="symbols">
-          <t>5G IETF Network Slices in Cloud RAN (C-RAN)</t>
-        </list>In Cloud-RAN deployment, the baseband unit is further
-      disaggregated into real-time and non-real-time components. The former is
-      deployed close to antenna to manages the real-time air interface
-      resources while the non-real-time control functions are hosted centrally
-      in the cloud. These components are called CU (Central Unit) and DU
-      (Distributed Unit) as shown in Figure 2-3 where these entities are
-      connected by a new network called Midhaul network.</t>
+          <t>IETF Network Slices in Cloud RAN (C-RAN)</t>
+        </list>In Cloud-RAN deployment, the network function NF2 is further
+      disaggregated into real-time and non-real-time components. As shown in 
+      Figure 2-3, these disaggregated components are called CU (Central Unit) and DU
+      (Distributed Unit) where they are connected by a new network called Midhaul network (MH).</t>
 
-      <t>In this deployment a single E2E network slice contains not only RAN
-      and 5G Core slices but IETF network slices INS_1 and INS_2 where INS_1
-      is identical to their counterparts in centralized RAN deployment case
-      (see Figure 2-2) and a new IETF network slice INS_2 connects the DUs to
+      <t>In this deployment a single 3GPP E2E network slice contains not only RAN
+      and 5G Core slices but IETF network slices INS1, INS2, INS3 and INS4.
+      IETF network slices INs1, INS2 and INS3 are identical to their counterparts in centralized RAN deployment case
+      (see Figure 2-2). In this deployment a new IETF network slice INS4 connects the DUs to
       CUs through F1 interface.</t>
 
       <t><figure>
           <artwork><![CDATA[ 
-   <---------------------- 5G E2E Network Slice  ------------------->
+   <---------------------- 3GPP E2E Network Slice  ------------------>
      <-------------- RS -------------->          <------- CS ------>
-          <- INS3 ->      <- INS4 ->      <- INS1 ->     <- INS2 ->
+          <- INS3 ->      <- INS4 ->   <- INS1 ->     <- INS2 ->
    .....................................        .....................
    : RAN                               :        :CN                 :
    :       .......       ......        : ...... :       .....       :
    : |---| :     : |---| :     : |---| : :    : : |---| :   : |---| :
-   : | NF| : TN3 : | DU| : TN4 : | CU| : :TN1 : : | NF| :TN2: | NF| :
+   : |NF1| : TN3 : | DU| : TN4 : | CU| : :TN1 : : | NF| :TN2: | NF| :
    : |---| : (FH): |---| : (MH): |---| : :(BH): : |---| :   : |---| :
    :       :.....:       :.....:       : :....: :       :...:       :
    :...................................:        :...................:  
@@ -365,6 +366,8 @@ Legend
   TN: IETF network
   DU: Distributed Unit
   CU: Central Unit
+  CN: Core Network
+  RAN:Access Neetwork (Radio)
 
          Figure 2-3: IETF network slices in Cloud RAN (C-RAN) deployment]]></artwork>
         </figure></t>
