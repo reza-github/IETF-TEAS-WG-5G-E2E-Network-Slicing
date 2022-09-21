@@ -268,17 +268,18 @@
       connectivity between RAN to CN slices.</t>
 
       <t><figure>
-          <artwork><![CDATA[   <--------- 5G E2E Network Slice  -------->
-   <--- RS ------->                <-- CS -->
-                    <--- INS_1 -->           
-   ..................
-   : RAN            :
-   :                : .............           
-   :                : :           : |------|  
-   :                : :    TN     : | CN   |  
-   :                : :           : |------|  
-   :                : :...........:           
-   :................:
+          <artwork><![CDATA[ 
+   <-------------- 5G E2E Network Slice  -------------->
+     <---- RS ---->           <-------- CS ---------->
+                    <- INS1 ->         <- INS2 ->
+   .................          .........................
+   : RAN           :          : CN                    :
+   :               : ........ :        .......        :
+   : |----| |----| : :      : : |----| :     : |----| :
+   : | NF | | NF | : :  TN1 : : | NF | : TN2 : | NF | :
+   : |----| |----| : :      : : |----| :     : |----| :
+   :               : :......: :        :.....:        :
+   :...............:          :.......................:      
 
    Legend
      INS: IETF Network Slice
@@ -301,17 +302,18 @@
       identical to their counterparts in distributed RAN deployment case.</t>
 
       <t><figure>
-          <artwork><![CDATA[ <--------------- 5G E2E Network Slice ---------->
- <-------- RS -------->                 <-- CS -->
-                         <--- INS_1 --->          
-...........................
-:  RAN                    :
-:        ........         : .............          
-: |----| :      : |-----| : :           : |------| 
-: | RU | :  FN  : |     | : :    TN     : | CN   | 
-: |----| :      : |-----| : :           : |------| 
-:        :......:         : :...........:          
-:.........................:
+          <artwork><![CDATA[ 
+   <-------------------- 5G E2E Network Slice  ----------------->
+     <-------- RS --------->           <---------- CS --------->
+          <- INS3 ->        <- INS1 ->         <- INS2 ->
+   .........................          ...........................
+   : RAN                   :          : CN                      :
+   :        .......        : ........ :         .......         :
+   : |----| :     : |----| : :      : : |-----| :     : |-----| :
+   : | NF | : TN3 : | NF | : :  TN1 : : | NF  | : TN2 : | NF  | :
+   : |----| : (FH): |----| : :      : : |-----| :     : |-----| :
+   :        :.....:        : :......: :         :.....:         :
+   :.......................:          :.........................: 
 
 Legend
   INS: IETF Network Slice
@@ -319,7 +321,6 @@ Legend
   CS: Core Slice
   FN: Fronthaul IETF network
   TN: IETF network
-  RU: Radio Unit
 
      Figure 2-2:  IETF network slices in Centralized RAN deployment]]></artwork>
         </figure></t>
@@ -341,18 +342,18 @@ Legend
       CUs through F1 interface.</t>
 
       <t><figure>
-          <artwork><![CDATA[ <----------------- 5G E2E Network Slice  ---------------->
- <--------------- RS ------------>                 <- CS ->
-                     <-- INS_2 -->     <-- INS_1 ->     
- ......................................
- :  RAN                               :
- :        ......        ......        : ........          
- :|----|  :    : |----| :    : |----| : :      : |------| 
- :| RU |  : FN : | DU | : MN : | CU | : :  TN  : | Core | 
- :|----|  :    : |----| :    : |----| : :      : |------| 
- :        :....:        :....:        : :......:          
- :                                    :
- :....................................:
+          <artwork><![CDATA[ 
+   <---------------------- 5G E2E Network Slice  ------------------->
+     <-------------- RS -------------->          <------- CS ------>
+          <- INS3 ->      <- INS4 ->      <- INS1 ->     <- INS2 ->
+   .....................................        .....................
+   : RAN                               :        :CN                 :
+   :       .......       ......        : ...... :       .....       :
+   : |---| :     : |---| :     : |---| : :    : : |---| :   : |---| :
+   : | NF| : TN3 : | DU| : TN4 : | CU| : :TN1 : : | NF| :TN2: | NF| :
+   : |---| : (FH): |---| : (MH): |---| : :(BH): : |---| :   : |---| :
+   :       :.....:       :.....:       : :....: :       :...:       :
+   :...................................:        :...................:  
 
 Legend
   INS: IETF Network Slice
@@ -360,10 +361,10 @@ Legend
   CS: Core Slice
   FN: Fronthaul IETF network
   MN: Midhaul IETF bnetwork
-  TN: Backhaul IETF network
+  BH: Backhual IETF network
+  TN: IETF network
   DU: Distributed Unit
   CU: Central Unit
-  RU: Radio Unit
 
          Figure 2-3: IETF network slices in Cloud RAN (C-RAN) deployment]]></artwork>
         </figure></t>
