@@ -268,7 +268,7 @@
       connectivity between RAN to CN slices.</t>
 
       <t><figure>
-          <artwork><![CDATA[   <--------- 5G E2E Network Slice  -------->
+          <artwork><![CDATA[   <-------- 5G E2E Network Slice  -------->
    <--- RS ------->                <-- CS -->
                     <--- INS_1 -->           
    ..................
