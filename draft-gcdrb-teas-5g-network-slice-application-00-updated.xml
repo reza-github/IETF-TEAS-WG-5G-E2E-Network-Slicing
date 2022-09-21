@@ -129,7 +129,7 @@
       Core Network (CN) and Transport Network (TN). This document describes
       the application of IETF network slice in providing 5G end-to-end network
       slices, including the network slice identification mapping, network
-      slice parameter mapping and 5G IETF Network Slice NBI. </t>
+      slice parameter mapping and 5G IETF Network Slice NBI.</t>
     </abstract>
 
     <note title="Requirements Language">
@@ -144,7 +144,7 @@
     <section title="Introduction">
       <t/>
 
-      <t>Driven by the new applications of 5G, the concept of network slicing
+      <t>Driven by the new  applications of 5G, the concept of network slicing
       is defined to provide a logical network with specific capabilities and
       characteristics. Network slice contains a set of network functions and
       allocated resources(e.g. computation, storage and network
