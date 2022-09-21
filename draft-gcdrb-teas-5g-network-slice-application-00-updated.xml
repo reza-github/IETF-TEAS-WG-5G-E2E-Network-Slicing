@@ -122,7 +122,7 @@
     <keyword>Draft</keyword>
 
     <abstract>
-      <t>Network Slicing is one of the core features in 5G, which provides
+      <t>Network slicing is one of the core features in 5G, which provides
       different network service as independent logical networks. To provide 5G
       network slices service, an end-to-end network slice needs to consists of
       3 major types of network segments: Radio Access Network (RAN), Mobile
